@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
-<link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
+    <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="style.css" >
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    <title>Simple Chat App</title>
+    <title>Websocket Demo</title>
 </head>
 
 <body>
 <header>
-<h1>Super Chat</h1>
+<h1>Super awesome L&L Channel</h1>
 </header>
 
 <section>
 <div id="change_username">
     <input id="username" type="text" />
-    <button id="send_username" type="button">Change username</button>
+    <button id="send_username" type="button" class="btn btn-success btn-sm">Change username</button>
 </div>
 </section>
 
@@ -28,7 +28,7 @@
 
     <section id="input_zone">
     <input id="message" class="vertical-align" type="text" />
-    <button id="send_message" class="vertical-align" type="button">Send</button>
+    <button id="send_message" class="vertical-align btn btn-primary" type="button" >Send</button>
     </section>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>

@@ -17,7 +17,7 @@ $(function(){
 
     //Listen on new_message
     socket.on("new_message", (data) => {
-        feedback.html('');
+    feedback.html('');
     message.val('');
     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
 })
