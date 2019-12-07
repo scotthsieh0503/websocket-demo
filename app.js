@@ -28,21 +28,22 @@ io.on('connection', (socket) => {
     console.log('New user connected')
 
 //default username
-socket.username = "Anonymous"
+const color = '#'+(Math.random()*0xFFFFFF<<0).toString(16)
+socket.user = {'username': 'Anonymous', 'color': color}
 
 //listen on change_username
 socket.on('change_username', (data) => {
-    socket.username = data.username
+    socket.user.username = data.username
 })
 
 //listen on new_message
 socket.on('new_message', (data) => {
     //broadcast the new message
-    io.sockets.emit('new_message', {message : data.message, username : socket.username});
+    io.sockets.emit('new_message', {message : data.message, user : socket.user});
 })
 
 //listen on typing
 socket.on('typing', (data) => {
-    socket.broadcast.emit('typing', {username : socket.username})
+    socket.broadcast.emit('typing', {user : socket.user})
 })
 })
