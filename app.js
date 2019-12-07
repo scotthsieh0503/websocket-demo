@@ -18,32 +18,31 @@ app.get('/', (req, res) => {
 server = app.listen(3000)
 
 
-
 //socket.io instantiation
 const io = require("socket.io")(server)
 
 
 //listen on every connection
-io.on('connection', (socket) => {
+const chat = io.of('/chat').on('connection', (socket) => {
     console.log('New user connected')
 
-//default username
-const color = '#'+(Math.random()*0xFFFFFF<<0).toString(16)
-socket.user = {'username': 'Anonymous', 'color': color}
+    //default username
+    const color = '#'+(Math.random()*0xFFFFFF<<0).toString(16)
+    socket.user = {'username': 'Anonymous', 'color': color}
 
-//listen on change_username
-socket.on('change_username', (data) => {
+    //listen on change_username
+    socket.on('change_username', (data) => {
     socket.user.username = data.username
-})
+    })
 
-//listen on new_message
-socket.on('new_message', (data) => {
+    //listen on new_message
+    socket.on('new_message', (data) => {
     //broadcast the new message
-    io.sockets.emit('new_message', {message : data.message, user : socket.user});
-})
+    socket.emit('new_message', {message : data.message, user : socket.user});
+    })
 
-//listen on typing
-socket.on('typing', (data) => {
+    //listen on typing
+    socket.on('typing', (data) => {
     socket.broadcast.emit('typing', {user : socket.user})
-})
+    })
 })

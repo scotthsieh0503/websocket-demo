@@ -77,5 +77,6 @@ p.message {
     height: 40px;
     font-size: 2vh;
     padding: 1vh;
+    margin-bottom: 2px;
 }
 
