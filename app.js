@@ -14,6 +14,11 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+
+app.get('/chart-demo', (req, res) => {
+    res.render('chartDemo')
+})
+
 //Listen on port 3000
 server = app.listen(3000)
 
@@ -45,4 +50,16 @@ const chat = io.of('/chat').on('connection', (socket) => {
     socket.on('typing', (data) => {
     socket.broadcast.emit('typing', {user : socket.user})
     })
+})
+
+
+//listen on every connection
+const chartDemo = io.of('/chart-demo').on('connection', (socket) => {
+    console.log('New user connected')
+
+
+//listen on change_username
+socket.on('new_data', (data) => {
+    socket.emit('new_data', {value : data.value, timestamp : data.timestamp});
+})
 })

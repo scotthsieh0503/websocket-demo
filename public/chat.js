@@ -12,7 +12,6 @@ $(function(){
 
     //Emit message
     send_message.click(function(){
-        console.log("send message")
         socket.emit('new_message', {message : message.val()})
     })
 
