@@ -56,10 +56,8 @@ const chat = io.of('/chat').on('connection', (socket) => {
 //listen on every connection
 const chartDemo = io.of('/chart-demo').on('connection', (socket) => {
     console.log('New user connected')
-
-
-//listen on change_username
-socket.on('new_data', (data) => {
-    socket.emit('new_data', {value : data.value, timestamp : data.timestamp});
-})
+    //listen on change_username
+    socket.on('new_data', (data) => {
+        socket.emit('new_data', {value : data.value, timestamp : data.timestamp});
+    })
 })

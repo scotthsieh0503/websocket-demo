@@ -1,6 +1,7 @@
 $(function(){
     //make connection
-    var socket_url = window.location.href + '/chat';
+    var socket_url = window.location.href + 'chat';
+    console.log(socket_url)
     var socket = io.connect(socket_url)
 
     //buttons and inputs
