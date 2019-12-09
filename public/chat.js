@@ -30,8 +30,11 @@ $(function(){
     })
 
     //Emit typing
-    message.bind("keypress", () => {
+    message.bind("keypress", (e) => {
         socket.emit('typing')
+        if (e.which == 13) {
+            socket.emit('new_message', {message : message.val()})
+        }
 })
 
     //Listen on typing
