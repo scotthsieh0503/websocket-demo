@@ -1,6 +1,7 @@
 $(function(){
 
-    var socket = io.connect('http://localhost:3000/chart-demo')
+    var socket_url = window.location.href;
+    var socket = io.connect(socket_url)
     var ctx = document.getElementById('myChart').getContext('2d');
     // save the chart instance to a variable
 
@@ -29,6 +30,10 @@ $(function(){
         socket.emit('new_data', {'value' : data, 'timestamp': event.timeStamp})
     })
 
+    $('#random-data').on('click', (event) => {
+        var data = Math.floor(Math.random() * 30) + 1
+        socket.emit('new_data', {'value' : data, 'timestamp': event.timeStamp})
+})
 
     //listener on new event
     socket.on('new_data', (data) => {

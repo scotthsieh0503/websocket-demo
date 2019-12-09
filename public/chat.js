@@ -1,6 +1,7 @@
 $(function(){
     //make connection
-    var socket = io.connect('http://localhost:3000/chat')
+    var socket_url = window.location.href + '/chat';
+    var socket = io.connect(socket_url)
 
     //buttons and inputs
     var message = $("#message")
