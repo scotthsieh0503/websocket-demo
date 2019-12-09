@@ -43,7 +43,7 @@ const chat = io.of('/chat').on('connection', (socket) => {
     //listen on new_message
     socket.on('new_message', (data) => {
     //broadcast the new message
-    socket.emit('new_message', {message : data.message, user : socket.user});
+        socket.broadcast.emit('new_message', {message : data.message, user : socket.user});
     })
 
     //listen on typing
@@ -58,6 +58,6 @@ const chartDemo = io.of('/chart-demo').on('connection', (socket) => {
     console.log('New user connected')
     //listen on change_username
     socket.on('new_data', (data) => {
-        socket.emit('new_data', {value : data.value, timestamp : data.timestamp});
+        socket.broadcast.emit('new_data', {value : data.value, timestamp : data.timestamp});
     })
 })
